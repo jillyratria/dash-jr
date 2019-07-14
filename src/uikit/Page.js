@@ -1,21 +1,23 @@
 import React from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import {
+  CssBaseline,
+  Drawer,
+  AppBar,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  Container,
+  Button,
+} from '@material-ui/core';
 import {mainListItems} from './listItems.js';
-import {Badge} from '@material-ui/core';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Cookies from 'universal-cookie';
+import {withRouter} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -53,6 +55,9 @@ const useStyles = makeStyles(theme => ({
   },
   menuButtonHidden: {
     display: 'none',
+  },
+  logout: {
+    color: 'white',
   },
   title: {
     flexGrow: 1,
@@ -98,7 +103,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Page(props) {
+function Page(props) {
+  console.log(props);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -111,6 +117,7 @@ export default function Page(props) {
   const logout = () => {
     const cookies = new Cookies();
     cookies.remove('token');
+    props.history.push('/');
   };
 
   return (
@@ -139,9 +146,9 @@ export default function Page(props) {
             className={classes.title}>
             {props.title}
           </Typography>
-          <IconButton color="inherit" onClick={logout}>
-            <NotificationsIcon />
-          </IconButton>
+          <Button className={classes.logout} onClick={logout}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -167,3 +174,5 @@ export default function Page(props) {
     </div>
   );
 }
+
+export default withRouter(Page);
