@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, Paper, TextField, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
@@ -35,8 +35,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LoginView() {
+export default function LoginView(props) {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -45,7 +48,7 @@ export default function LoginView() {
           <Typography component="h1" variant="h5">
             LOGIN
           </Typography>
-          <form className={classes.form} noValidate>
+          <div className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -56,6 +59,10 @@ export default function LoginView() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={event => {
+                setEmail(event.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -67,13 +74,23 @@ export default function LoginView() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={event => {
+                setPassword(event.target.value);
+              }}
             />
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}>
+              className={classes.submit}
+              onClick={() => {
+                props.onSubmit({
+                  email: email,
+                  password: password,
+                });
+              }}>
               LOGIN
             </Button>
             <Grid container>
@@ -83,7 +100,7 @@ export default function LoginView() {
                 </Link>
               </Grid>
             </Grid>
-          </form>
+          </div>
         </div>
       </Grid>
     </Grid>

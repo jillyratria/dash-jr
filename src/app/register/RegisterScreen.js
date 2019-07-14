@@ -27,4 +27,4 @@ class RegisterScreen extends React.Component<> {
   }
 }
 
-export default RegisterScreen;
+export default withRouter(RegisterScreen);
