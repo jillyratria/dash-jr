@@ -8,13 +8,14 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 const token = cookies.get('token');
-const isLoggedIn = token ? true : false;
+const isLoggedIn = token && token !== '' ? true : false;
+console.log(isLoggedIn);
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route
     {...rest}
     render={props =>
-      isLoggedIn === true ? <Component {...props} /> : <Redirect to="/" />
+      token && token !== '' ? <Component {...props} /> : <Redirect to="/" />
     }
   />
 );

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
-import {Grid, Paper, Avatar, Button, Modal} from '@material-ui/core';
-
+import {Grid, Paper, Avatar, Button, Modal, Fab, Icon} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {Page} from '../../uikit';
 import {
   Table,
@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 4),
     outline: 'none',
   },
+  margin: {
+    margin: '0 6px',
+  },
 }));
 
 function rand() {
@@ -53,6 +56,7 @@ export default function Users(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const {users} = props;
   const [openCreateModal, setOpenCreateModal] = React.useState(false);
+  const [name, setName] = React.useState('');
 
   const handleOpen = () => {
     setOpenCreateModal(true);
@@ -81,8 +85,9 @@ export default function Users(props) {
                   <TableCell>Id</TableCell>
                   <TableCell>Avatar</TableCell>
                   <TableCell>Email</TableCell>
-                  <TableCell align="right">First Name</TableCell>
-                  <TableCell align="right">Last Name</TableCell>
+                  <TableCell>First Name</TableCell>
+                  <TableCell>Last Name</TableCell>
+                  <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -97,8 +102,24 @@ export default function Users(props) {
                     <TableCell component="th" scope="row">
                       {user.email}
                     </TableCell>
-                    <TableCell align="right">{user.first_name}</TableCell>
-                    <TableCell align="right">{user.last_name}</TableCell>
+                    <TableCell>{user.first_name}</TableCell>
+                    <TableCell>{user.last_name}</TableCell>
+                    <TableCell align="right">
+                      <Fab
+                        size="small"
+                        color="primary"
+                        aria-label="Add"
+                        className={classes.margin}>
+                        <Icon>edit_icon</Icon>
+                      </Fab>
+                      <Fab
+                        size="small"
+                        color="secondary"
+                        aria-label="Add"
+                        className={classes.margin}>
+                        <DeleteIcon />
+                      </Fab>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

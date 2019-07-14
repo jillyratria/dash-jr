@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import {Grid, Paper} from '@material-ui/core';
 import Chart from './Chart';
+import BarChart from './BarChart';
 import PieChart from './PieChart';
 import {Page} from '../../uikit';
 const useStyles = makeStyles(theme => ({
@@ -30,10 +31,16 @@ export default function Dashboard() {
           </Paper>
         </Grid>
         <Grid item xs={12}>
+          <Paper className={fixedHeightPaper}>
+            <BarChart />
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
           <Paper>
             <PieChart />
           </Paper>
         </Grid>
+
         {/* Recent Orders */}
         <Grid item xs={12}>
           <Paper className={classes.paper}>{/* <Orders /> */}</Paper>

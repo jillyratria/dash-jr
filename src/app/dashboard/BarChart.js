@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Label,
@@ -29,9 +29,9 @@ const data = [
 export default function Chart() {
   return (
     <React.Fragment>
-      <Title>LINE Chart</Title>
+      <Title>BAR Chart</Title>
       <ResponsiveContainer>
-        <LineChart
+        <BarChart
           data={data}
           margin={{
             top: 16,
@@ -45,8 +45,8 @@ export default function Chart() {
               Sales ($)
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke="#556CD6" dot={false} />
-        </LineChart>
+          <Bar type="monotone" dataKey="amount" fill="#556CD6" />
+        </BarChart>
       </ResponsiveContainer>
     </React.Fragment>
   );

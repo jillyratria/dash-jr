@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import LoginView from './LoginView';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -25,7 +25,13 @@ class LoginScreen extends React.Component<> {
   }
 
   render() {
-    return <LoginView onSubmit={this.handleSubmit} />;
+    const cookies = new Cookies();
+    let token = cookies.get('token');
+    if (token) {
+      return <Redirect to="/dashboard" />;
+    } else {
+      return <LoginView onSubmit={this.handleSubmit} />;
+    }
   }
 }
 
