@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,22 +9,10 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import {mainListItems} from './listItems';
-
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableCell,
-  TableRow,
-} from '@material-ui/core';
+import {mainListItems} from './listItems.js';
 
 const drawerWidth = 240;
 
@@ -109,17 +95,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UsersView = props => {
-  console.log(props);
+export default function Page(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -145,7 +129,7 @@ const UsersView = props => {
             color="inherit"
             noWrap
             className={classes.title}>
-            User
+            {props.title}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -166,27 +150,9 @@ const UsersView = props => {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Id</TableCell>
-                      <TableCell>Email</TableCell>
-                      <TableCell align="right">First Name</TableCell>
-                      <TableCell align="right">Last Name</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody />
-                </Table>
-              </Paper>
-            </Grid>
-          </Grid>
+          {props.children}
         </Container>
       </main>
     </div>
   );
-};
-
-export default UsersView;
+}

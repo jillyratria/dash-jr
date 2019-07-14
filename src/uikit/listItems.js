@@ -8,21 +8,21 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <Link to="/dashboard">
+    <Link to="/dashboard">
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
         <ListItemText primary="Dashboard" />
-      </Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <Link to="/users">
+      </ListItem>
+    </Link>
+    <Link to="/users">
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
         <ListItemText primary="Users" />
-      </Link>
-    </ListItem>
+      </ListItem>
+    </Link>
   </div>
 );

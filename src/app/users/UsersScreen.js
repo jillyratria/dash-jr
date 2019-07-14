@@ -13,10 +13,10 @@ class UsersScreen extends Component {
     axios
       .get(`https://reqres.in/api/users`)
       .then(res => {
+        console.log(res);
         let users = res.data.data;
         console.log(users);
         this.setState({users: users});
-        return users;
       })
       .catch(err => {
         alert(err);
@@ -28,7 +28,7 @@ class UsersScreen extends Component {
   }
 
   render() {
-    return <UsersView users={this.state.users} />;
+    return <UsersView />;
   }
 }
 export default UsersScreen;
