@@ -167,7 +167,7 @@ export default function Dashboard() {
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
+              <Paper>
                 <PieChart />
               </Paper>
             </Grid>

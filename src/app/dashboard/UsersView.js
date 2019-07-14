@@ -17,8 +17,15 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItems} from './listItems';
-import Chart from './Chart';
-import PieChart from './PieChart';
+import PropTypes from 'prop-types';
+
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableCell,
+  TableRow,
+} from '@material-ui/core';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
 
@@ -103,7 +110,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function UsersView() {
+function UsersView(props) {
+  console.log(props);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -138,7 +146,7 @@ export default function UsersView() {
             color="inherit"
             noWrap
             className={classes.title}>
-            Dashboard
+            User
           </Typography>
         </Toolbar>
       </AppBar>
@@ -162,7 +170,17 @@ export default function UsersView() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-                <h2>Hai</h2>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Id</TableCell>
+                      <TableCell>Email</TableCell>
+                      <TableCell align="right">First Name</TableCell>
+                      <TableCell align="right">Last Name</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody />
+                </Table>
               </Paper>
             </Grid>
           </Grid>
@@ -171,3 +189,10 @@ export default function UsersView() {
     </div>
   );
 }
+
+export default UsersView;
+console.log(PropTypes);
+
+UsersView.propTypes = {
+  users: PropTypes.array,
+};
