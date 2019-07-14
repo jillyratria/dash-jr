@@ -3,13 +3,8 @@ import {
   Button,
   Grid,
   Paper,
-  Avatar,
-  CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
-  Box,
   Typography,
 } from '@material-ui/core';
 import {styled, makeStyles} from '@material-ui/styles';
@@ -39,7 +34,7 @@ const useStyles = makeStyles({
     padding: '32px',
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
   },
   submit: {
     margin: '16px 0',
@@ -90,7 +85,7 @@ export default function LoginView() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link to="/" variant="body2">
+                <Link href="/" variant="body2">
                   {'Already have an account? Login'}
                 </Link>
               </Grid>

@@ -3,17 +3,11 @@ import {
   Button,
   Grid,
   Paper,
-  Avatar,
-  CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
-  Box,
   Typography,
 } from '@material-ui/core';
-import {styled, makeStyles} from '@material-ui/styles';
-import PropTypes from 'prop-types';
+import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
