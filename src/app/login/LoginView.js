@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
-    background: 'linear-gradient(45deg, #3f51b5 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #3f51b5 30%, #c2d880 90%)',
     border: 0,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(https://source.unsplash.com/user/erondu/1600x900)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
