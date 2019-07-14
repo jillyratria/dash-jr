@@ -28,7 +28,7 @@ class UsersScreen extends Component {
   }
 
   render() {
-    return <UsersView />;
+    return <UsersView users={this.state.users} />;
   }
 }
 export default UsersScreen;

@@ -13,6 +13,9 @@ import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItems} from './listItems.js';
+import {Badge} from '@material-ui/core';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import Cookies from 'universal-cookie';
 
 const drawerWidth = 240;
 
@@ -105,6 +108,11 @@ export default function Page(props) {
     setOpen(false);
   };
 
+  const logout = () => {
+    const cookies = new Cookies();
+    cookies.remove('token');
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -131,6 +139,9 @@ export default function Page(props) {
             className={classes.title}>
             {props.title}
           </Typography>
+          <IconButton color="inherit" onClick={logout}>
+            <NotificationsIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer

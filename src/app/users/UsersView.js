@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import {Grid, Paper, Avatar} from '@material-ui/core';
+
 import {Page} from '../../uikit';
 import {
   Table,
@@ -25,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 export default function Users(props) {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  console.log(props);
+  const {users} = props;
   return (
     <Page title="Users">
       <Grid container spacing={3}>
@@ -35,12 +33,29 @@ export default function Users(props) {
               <TableHead>
                 <TableRow>
                   <TableCell>Id</TableCell>
+                  <TableCell>Avatar</TableCell>
                   <TableCell>Email</TableCell>
                   <TableCell align="right">First Name</TableCell>
                   <TableCell align="right">Last Name</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody />
+              <TableBody>
+                {users.map(user => (
+                  <TableRow key={user.id}>
+                    <TableCell component="th" scope="row">
+                      {user.id}
+                    </TableCell>
+                    <TableCell>
+                      <Avatar alt={user.first_name} src={user.avatar} />
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {user.email}
+                    </TableCell>
+                    <TableCell align="right">{user.first_name}</TableCell>
+                    <TableCell align="right">{user.last_name}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
             </Table>
           </Paper>
         </Grid>
