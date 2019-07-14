@@ -1,17 +1,11 @@
 import * as React from 'react';
-import {
-  Button,
-  Grid,
-  Paper,
-  TextField,
-  Link,
-  Typography,
-} from '@material-ui/core';
+import {Button, Grid, Paper, TextField, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #3f51b5 30%, #FF8E53 90%)',
     border: 0,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
@@ -84,8 +78,8 @@ export default function LoginView() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Don't have an account? Register!"}
+                <Link to="/register" variant="">
+                  Don't have an account? Register
                 </Link>
               </Grid>
             </Grid>

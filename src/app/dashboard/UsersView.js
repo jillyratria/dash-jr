@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,7 +19,6 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItems} from './listItems';
-import PropTypes from 'prop-types';
 
 import {
   Table,
@@ -26,8 +27,6 @@ import {
   TableCell,
   TableRow,
 } from '@material-ui/core';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
 
 const drawerWidth = 240;
 
@@ -110,7 +109,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function UsersView(props) {
+const UsersView = props => {
   console.log(props);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -188,11 +187,6 @@ function UsersView(props) {
       </main>
     </div>
   );
-}
+};
 
 export default UsersView;
-console.log(PropTypes);
-
-UsersView.propTypes = {
-  users: PropTypes.array,
-};
